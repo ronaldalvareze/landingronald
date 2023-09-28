@@ -1,0 +1,49 @@
+---
+import layout from "../../components/layout.astro"
+import img from "../../img/cafeteria.jpg"
+
+const posts = await Astro.glob('./post/*.md')
+console.log(posts.map(post => post.url
+));
+
+---
+<layout pageTitle = "Blog del curso Astro">
+<h1>blog</h1>
+<p>Bienvenidos al blog</p>
+<hr>
+<br>
+<div class="imagen">
+<img src={img.src}alt="imagen de cafeteria" width="50%" height="20%">
+</div>
+{
+    posts.map(post => {
+        return <a href = {post.url} class="link">{post.frontmatter.title}</a><br> <br>
+    })
+}
+<div class="imagen">
+<img src="https://images.pexels.com/photos/16067574/pexels-photo-16067574/free-photo-of-blanco-y-negro-nubes-panorama-urbano-puente.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="imagen de puente" width="500px" height="500px" >
+<img src="/images/imagen-prueba.jpg" alt="foto rueda volante" width="500px" height="500px">
+</div>
+<style>
+.link{
+        background:white;
+        color:black;
+        text-decoration:none;
+        display:flex;
+        margin-botton:4px¨;
+    }  
+
+img{
+        border-radius:20px;
+        margin:20px 0 20px 20px;
+        align-item:space-arown
+    }
+
+.imagen{
+        display:flex;
+        justify-content:center;
+        aling-item:space-betwen;
+    }
+</style>
+
+</layout>
